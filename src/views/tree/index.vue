@@ -1,20 +1,11 @@
 <template>
   <div class="app-container">
-    <el-input v-model="filterText" placeholder="Filter keyword" style="margin-bottom:30px;" />
     <el-tree
       :props="props1"
       :load="loadNode1"
       lazy
       show-checkbox
     />
-
-    <!-- <el-tree
-      ref="tree2"
-      :data="data2"
-      :props="props"
-      @check-change="handleCheckChange"
-      class="filter-tree"
-  </el-tree> -->
   </div>
 </template>
 
