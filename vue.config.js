@@ -38,6 +38,15 @@ module.exports = {
     },
     before: require('./mock/mock-server.js')
   },
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'scss',
+      patterns: [
+        path.resolve(__dirname, 'src/styles/_variables.scss')
+        // path.resolve(__dirname, 'src/styles/_mixins.scss')
+      ]
+    }
+  },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.

@@ -1,52 +1,69 @@
 <template>
   <div class="app-container">
-    <el-table
-      v-loading="listLoading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="ID" width="95">
-        <template slot-scope="scope">
-          {{ scope.$index }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Title">
-        <template slot-scope="scope">
-          {{ scope.row.title }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Author" width="110" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Pageviews" width="110" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.pageviews }}
-        </template>
-      </el-table-column>
-      <el-table-column class-name="status-col" label="Status" width="110" align="center">
-        <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" prop="created_at" label="Display_time" width="200">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.display_time }}</span>
-        </template>
-      </el-table-column>
-    </el-table>
+    <div class="search-bar">
+      <el-input
+        v-model="query.minerSn"
+        placeholder="miner sn"
+        size="mini"
+        multiple
+        clearable
+        class="search-item multiple-width"
+        @change="fetchData"
+      />
+      <el-button
+        type="primary"
+        size="mini"
+        class="btn-bold"
+        @click="getMinerList"
+      >搜索</el-button>
+    </div>
+    <div>
+      <el-table
+        v-loading="listLoading"
+        :data="list"
+        element-loading-text="Loading"
+        border
+        fit
+        highlight-current-row
+      >
+        <el-table-column align="center" label="sn">
+          <template slot-scope="{row}">{{ row.sn }}</template>
+        </el-table-column>
+        <el-table-column align="center" label="dna">
+          <template slot-scope="{row}">{{ row.dna }}</template>
+        </el-table-column>
+        <el-table-column align="center" label="model">
+          <template slot-scope="{row}">{{ row.model }}</template>
+        </el-table-column>
+        <el-table-column align="center" label="createAt">
+          <template slot-scope="{row}">{{ row.createAt }}</template>
+        </el-table-column>
+        <el-table-column align="center" label="buyerName">
+          <template slot-scope="{row}">{{ row.buyerName }}</template>
+        </el-table-column>
+        <el-table-column align="center" label="saleDate">
+          <template slot-scope="{row}">{{ row.saleDate }}</template>
+        </el-table-column>
+      </el-table>
+    </div>
+    <div class="pagination">
+      <pagination
+        v-show="true"
+        :total="total"
+        :page.sync="query.pageIndex"
+        :limit.sync="query.pageSize"
+        @pagination="fetchData"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import { getList } from '@/api/table'
+import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
 export default {
+  components: { Pagination },
   filters: {
     statusFilter(status) {
       const statusMap = {
@@ -59,8 +76,15 @@ export default {
   },
   data() {
     return {
+      total: 0,
       list: null,
-      listLoading: true
+      listLoading: true,
+      query: {
+        bomSn: '',
+        minerSn: '',
+        pageIndex: 1,
+        pageSize: 10
+      }
     }
   },
   created() {
@@ -69,11 +93,19 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true
-      getList().then(response => {
-        this.list = response.data.items
+      getList(this.query).then(response => {
+        this.list = response.data
+        this.total = response.total
+        console.log(response.total)
         this.listLoading = false
       })
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.multiple-width {
+  width: 300px;
+}
+</style>
