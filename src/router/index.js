@@ -69,6 +69,12 @@ export const constantRoutes = [
         meta: { title: '销售矿机', icon: 'table' }
       },
       {
+        path: 'bom',
+        name: 'Bom',
+        component: () => import('@/views/miner/bom-list'),
+        meta: { title: '矿机配件', icon: 'table' }
+      },
+      {
         path: 'blob',
         name: 'Blob',
         component: () => import('@/views/blob/index'),

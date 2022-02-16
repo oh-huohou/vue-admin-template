@@ -7,3 +7,12 @@ export function getSaleMinerList(data) {
     data
   })
 }
+
+export function getSaleBomList(data) {
+  return request({
+    url: '/miner_bom_list',
+    method: 'post',
+    data
+  })
+}
+
