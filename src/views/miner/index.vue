@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { getList } from '@/api/table'
+import { getSaleMinerList } from '@/api/miner'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
 
 export default {
@@ -93,7 +93,7 @@ export default {
   methods: {
     fetchData() {
       this.listLoading = true
-      getList(this.query).then(response => {
+      getSaleMinerList(this.query).then(response => {
         this.list = response.data
         this.total = response.total
         console.log(response.total)

@@ -56,22 +56,22 @@ export const constantRoutes = [
   },
 
   {
-    path: '/example',
+    path: '/data',
     component: Layout,
-    redirect: '/example/table',
+    redirect: '/data/miner',
     name: 'Example',
     meta: { title: '原石', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
+        path: 'miner',
+        name: 'Miner',
+        component: () => import('@/views/miner/index'),
         meta: { title: '销售矿机', icon: 'table' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
+        path: 'blob',
+        name: 'Blob',
+        component: () => import('@/views/blob/index'),
         meta: { title: 'Blob存储', icon: 'tree' }
       }
     ]
