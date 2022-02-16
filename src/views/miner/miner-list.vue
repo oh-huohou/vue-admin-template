@@ -10,6 +10,15 @@
         class="search-item multiple-width"
         @change="fetchData"
       />
+      <el-input
+        v-model="query.dna"
+        placeholder="miner dna"
+        size="mini"
+        multiple
+        clearable
+        class="search-item multiple-width"
+        @change="fetchData"
+      />
       <el-button
         type="primary"
         size="mini"
@@ -82,6 +91,7 @@ export default {
       query: {
         bomSn: '',
         minerSn: '',
+        dna: '',
         pageIndex: 1,
         pageSize: 10
       }

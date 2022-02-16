@@ -1,0 +1,23 @@
+.search-bar {
+  height: $searchBarHeight;
+  display: flex;
+  align-items: center;
+
+  .search-item {
+    width: 180px;
+    margin-right: 10px;
+  }
+  .search-item-width {
+    width: 280px;
+    margin-right: 10px;
+  }
+  .search-item-date {
+    width: 240px;
+  }
+  .grid-item-btn {
+    margin-left: auto;
+  }
+}
+
+
+

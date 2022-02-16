@@ -65,7 +65,7 @@ export const constantRoutes = [
       {
         path: 'miner',
         name: 'Miner',
-        component: () => import('@/views/miner/index'),
+        component: () => import('@/views/miner/miner-list'),
         meta: { title: '销售矿机', icon: 'table' }
       },
       {
