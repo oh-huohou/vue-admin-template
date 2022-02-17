@@ -45,13 +45,13 @@
           <template slot-scope="{row}">{{ row.model }}</template>
         </el-table-column>
         <el-table-column align="center" label="createAt">
-          <template slot-scope="{row}">{{ row.createAt }}</template>
+          <template slot-scope="{row}">{{ row.createAt | moment('YYYY-MM-DD HH:mm:ss') }}</template>
         </el-table-column>
         <el-table-column align="center" label="buyerName">
           <template slot-scope="{row}">{{ row.buyerName }}</template>
         </el-table-column>
         <el-table-column align="center" label="saleDate">
-          <template slot-scope="{row}">{{ row.saleDate }}</template>
+          <template slot-scope="{row}">{{ row.saleDate | moment('YYYY-MM-DD HH:mm:ss') }}</template>
         </el-table-column>
       </el-table>
     </div>
