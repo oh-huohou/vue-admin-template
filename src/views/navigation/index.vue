@@ -26,12 +26,21 @@
         </div>
       </el-col>
     </el-row>
+
     <el-row>
       <el-col :span="8">
         <div class="grid-content bg-purple" align="center">
           <img src="../../assets/images/shouhou.jpeg" class="logo">
           <div>
             <el-link type="primary" href="https://asi.canaan-creative.com/" target="_blank" style="font-size:18px">国外售后系统</el-link>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="8">
+        <div class="grid-content bg-purple" align="center">
+          <img src="../../assets/images/jenkins.png" class="logo">
+          <div>
+            <el-link type="primary" href="https://jks.b-bug.org/" target="_blank" style="font-size:18px">jenkins</el-link>
           </div>
         </div>
       </el-col>
