@@ -51,10 +51,10 @@
           <template slot-scope="{row}">{{ row.bomType }}</template>
         </el-table-column>
         <el-table-column align="center" label="createAt">
-          <template slot-scope="{row}">{{ row.createAt }}</template>
+          <template slot-scope="{row}"> {{ row.createAt | moment('YYYY-MM-DD HH:mm:ss') }}</template>
         </el-table-column>
         <el-table-column align="center" label="saleDate">
-          <template slot-scope="{row}">{{ row.saleDate }}</template>
+          <template slot-scope="{row}">{{ row.saleDate | moment('YYYY-MM-DD HH:mm:ss') }}</template>
         </el-table-column>
       </el-table>
     </div>
@@ -84,6 +84,10 @@ export default {
         deleted: 'danger'
       }
       return statusMap[status]
+    },
+    parseTime(value) {
+      console.log(new Date(value).format('yyyy-MM-dd hh:mm:ss'))
+      return value
     }
   },
   data() {
@@ -111,6 +115,10 @@ export default {
         console.log(response.total)
         this.listLoading = false
       })
+    },
+    parseTime(value) {
+      console.log('shijian' + value)
+      return value
     }
   }
 }
