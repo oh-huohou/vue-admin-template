@@ -62,9 +62,10 @@ export const constantRoutes = [
       path: 'navigation',
       name: 'Navigation',
       component: () => import('@/views/navigation/index'),
-      meta: { title: 'Navigation', icon: 'dashboard' }
+      meta: { title: '导航', icon: 'guide' }
     }]
   },
+
   {
     path: '/data',
     component: Layout,
