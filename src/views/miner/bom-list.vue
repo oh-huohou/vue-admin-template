@@ -84,10 +84,6 @@ export default {
         deleted: 'danger'
       }
       return statusMap[status]
-    },
-    parseTime(value) {
-      console.log(new Date(value).format('yyyy-MM-dd hh:mm:ss'))
-      return value
     }
   },
   data() {
@@ -112,13 +108,8 @@ export default {
       getSaleBomList(this.query).then(response => {
         this.list = response.data
         this.total = response.total
-        console.log(response.total)
         this.listLoading = false
       })
-    },
-    parseTime(value) {
-      console.log('shijian' + value)
-      return value
     }
   }
 }

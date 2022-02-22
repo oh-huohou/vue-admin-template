@@ -106,7 +106,6 @@ export default {
       getSaleMinerList(this.query).then(response => {
         this.list = response.data
         this.total = response.total
-        console.log(response.total)
         this.listLoading = false
       })
     }
